@@ -59,18 +59,25 @@
     <CDropdownItem>
       <CIcon name="cil-shield-alt" /> Lock Account
     </CDropdownItem>
-    <CDropdownItem>
+    <CDropdownItem @click="logout()">
       <CIcon name="cil-lock-locked" /> Logout
     </CDropdownItem>
   </CDropdown>
 </template>
 
 <script>
+import router from 'vue-router'
 export default {
   name: 'TheHeaderDropdownAccnt',
   data () {
     return { 
       itemsCount: 42
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push({ path: '/register' })
     }
   }
 }

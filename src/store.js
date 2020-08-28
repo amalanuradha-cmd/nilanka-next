@@ -10,10 +10,7 @@ const state = {
 }
 
 const mutations = {
-  AUTH_SUCCESS: (state, token) => {
-    state.status = 'success'
-    state.token = token
-  },
+  
   toggleSidebarDesktop (state) {
     const sidebarOpened = [true, 'responsive'].includes(state.sidebarShow)
     state.sidebarShow = sidebarOpened ? false : 'responsive'
