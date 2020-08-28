@@ -29,7 +29,7 @@
                   </CInput>
                   <CRow>
                     <CCol col="6" class="text-left">
-                      <CButton color="primary" class="px-4" @click="login()">Login</CButton>
+                      <CButton color="dark" class="px-4" @click="login()">Login</CButton>
                     </CCol>
                     <CCol col="6" class="text-right">
                       <CButton color="link" class="px-0">Forgot password?</CButton>
@@ -40,7 +40,7 @@
               </CCardBody>
             </CCard>
             <CCard
-              color="primary"
+              color="dark"
               text-color="white"
               class="text-center py-5 d-md-down-none"
               body-wrapper
