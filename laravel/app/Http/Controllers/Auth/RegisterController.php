@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(Request $request)
     {
-        // return 1;
+        
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
