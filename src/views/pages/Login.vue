@@ -8,11 +8,13 @@
               <CCardBody>
                 <CForm>
                   <!-- {{info}} -->
+                  <!-- {{loginReponse.data}} -->
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <CInput
                     placeholder="Username"
                     autocomplete="username email"
+                    v-model="user.email"
                   >
                     <template #prepend-content><CIcon name="cil-user"/></template>
                   </CInput>
@@ -20,6 +22,7 @@
                     placeholder="Password"
                     type="password"
                     autocomplete="curent-password"
+                    v-model="user.password"
                   >
                     <template #prepend-content><CIcon name="cil-lock-locked"/></template>
                   </CInput>
@@ -68,7 +71,14 @@ export default {
   name: 'Login',
   data () {
     return {
-      info: null
+      info: null,
+      user: {
+        email: "",
+        password: ""
+      },
+      loginReponse: {
+        data: {}
+      }
     }
   },
   methods: {
@@ -76,8 +86,16 @@ export default {
       this.$router.push({ path: '/register' })
     },
     login: function() {
-      this.$router.push({ path: '/dashboard' })
+      axios
+      .post('http://localhost:8000/api/user/login', this.user)
+      .then(response => {this.loginReponse = response;
+          if (this.loginReponse.data.access_token)
+        this.$router.push({ path: '/dashboard' })
       
+      });
+      
+      
+
     },
     getData() {
     axios

@@ -53,6 +53,9 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+
+        
+        
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
@@ -85,7 +88,7 @@ class LoginController extends Controller
      */
     public function user(Request $request)
     {
-        return 1;
+        
         return response()->json($request->user());
     }        
 }
