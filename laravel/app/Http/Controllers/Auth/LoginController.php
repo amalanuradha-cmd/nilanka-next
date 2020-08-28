@@ -67,6 +67,7 @@ class LoginController extends Controller
                 'message' => 'Unauthorized'
             ], 401);
         $user = $request->user();
+        if ($user->hasRole('admin')) $user->role = 'admin';
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)

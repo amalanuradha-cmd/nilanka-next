@@ -70,7 +70,8 @@ class RegisterController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6'
+            'password_confirmation' => 'min:6',
+            'role' => 'required'
         ]);
         
         $user = new User([
