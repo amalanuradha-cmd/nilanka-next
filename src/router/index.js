@@ -331,7 +331,7 @@ function configRoutes () {
           component: Login
         },
         {
-          path: 'register',
+          path: '/register',
           name: 'Register',
           component: Register
         }
