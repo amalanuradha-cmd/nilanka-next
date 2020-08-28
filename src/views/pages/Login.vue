@@ -24,7 +24,7 @@
                   </CInput>
                   <CRow>
                     <CCol col="6" class="text-left">
-                      <CButton color="primary" class="px-4">Login</CButton>
+                      <CButton color="primary" class="px-4" @click="login()">Login</CButton>
                     </CCol>
                     <CCol col="6" class="text-right">
                       <CButton color="link" class="px-0">Forgot password?</CButton>
@@ -60,7 +60,13 @@
 </template>
 
 <script>
+import router from 'vue-router'
 export default {
-  name: 'Login'
+  name: 'Login',
+  methods: {
+    login: function() {
+      this.$router.push({ path: '/dashboard' })
+    }
+  }
 }
 </script>

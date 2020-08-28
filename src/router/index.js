@@ -326,7 +326,7 @@ function configRoutes () {
           component: Page500
         },
         {
-          path: 'login',
+          path: '/login',
           name: 'Login',
           component: Login
         },
