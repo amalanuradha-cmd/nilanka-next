@@ -9,6 +9,7 @@
                 <CForm>
                   <!-- {{info}} -->
                   <!-- {{loginReponse.data}} -->
+                  <!-- {{count}} -->
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <CInput
@@ -89,6 +90,7 @@ export default {
       axios
       .post('http://localhost:8000/api/user/login', this.user)
       .then(response => {this.loginReponse = response;
+      this.$store.commit('storeUser', response.data.token)
           if (this.loginReponse.data.access_token)
         this.$router.push({ path: '/dashboard' })
       
@@ -102,6 +104,11 @@ export default {
       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .then(response => (this.info = response));
      
+    }
+  },
+   computed: {
+    count () {
+      return this.$store.state.storeUser
     }
   },
    mounted () {
