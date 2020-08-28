@@ -7,6 +7,7 @@
             <CCard class="p-4">
               <CCardBody>
                 <CForm>
+                  <!-- {{info}} -->
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <CInput
@@ -61,12 +62,29 @@
 
 <script>
 import router from 'vue-router'
+import axios from 'axios'
 export default {
   name: 'Login',
+  data () {
+    return {
+      info: null
+    }
+  },
   methods: {
     login: function() {
       this.$router.push({ path: '/dashboard' })
+      
+    },
+    getData() {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response));
+     
     }
-  }
+  },
+   mounted () {
+this.getData()  
+  
+}
 }
 </script>
