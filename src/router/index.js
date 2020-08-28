@@ -345,7 +345,9 @@ function configRoutes () {
   ]
 }
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && !localStorage.getItem("token")) next({ name: 'Login' })
+  
+  if (to.name !== 'Register' && to.name !== 'Login' && !localStorage.getItem("token")) next({ name: 'Login' })
+  
   else next()
 })
 export default router;
