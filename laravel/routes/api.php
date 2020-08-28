@@ -21,3 +21,6 @@ Route::post('user/create', 'Auth\RegisterController@create');
 
 Route::post('user/login', 'Auth\LoginController@login');
 
+Route::group(['middleware' => ['auth']], function() {
+    
+    });

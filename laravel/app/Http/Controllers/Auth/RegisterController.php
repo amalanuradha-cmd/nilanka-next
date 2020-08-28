@@ -78,6 +78,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+        $user->assignRole($request->role);
         $user->save();
         return response()->json([
             'message' => 'Successfully created user!'
