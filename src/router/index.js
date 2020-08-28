@@ -69,6 +69,11 @@ export default new Router({
 function configRoutes () {
   return [
     {
+      path: '/home',
+      name: 'home',
+      component: Login
+    },
+    {
       path: '/',
       redirect: '/dashboard',
       name: 'Home',
