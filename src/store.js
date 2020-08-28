@@ -5,12 +5,14 @@ Vue.use(Vuex)
 const state = {
   sidebarShow: 'responsive',
   sidebarMinimize: false,
-  token: ''
+  token: '',
+  status: ''
 }
 
 const mutations = {
-  storeUser (state) {
-    state.token = state.token;
+  AUTH_SUCCESS: (state, token) => {
+    state.status = 'success'
+    state.token = token
   },
   toggleSidebarDesktop (state) {
     const sidebarOpened = [true, 'responsive'].includes(state.sidebarShow)

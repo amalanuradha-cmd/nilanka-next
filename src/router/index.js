@@ -59,7 +59,7 @@ const User = () => import('@/views/users/User')
 
 Vue.use(Router)
 
-export default new Router({
+let router= new Router({
   mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'active',
   scrollBehavior: () => ({ y: 0 }),
@@ -69,8 +69,8 @@ export default new Router({
 function configRoutes () {
   return [
     {
-      path: '/home',
-      name: 'home',
+      path: '/login',
+      name: 'Login',
       component: Login
     },
     {
@@ -344,4 +344,9 @@ function configRoutes () {
     }
   ]
 }
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'Login' && !localStorage.getItem("token")) next({ name: 'Login' })
+  else next()
+})
+export default router;
 

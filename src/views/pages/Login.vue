@@ -90,14 +90,15 @@ export default {
       axios
       .post('http://localhost:8000/api/user/login', this.user)
       .then(response => {this.loginReponse = response;
-      this.$store.commit('storeUser', response.data.token)
+      localStorage.setItem("token", this.loginReponse.data.access_token);
           if (this.loginReponse.data.access_token)
         this.$router.push({ path: '/dashboard' })
+        // console.log(localStorage.getItem('token'));
       
       });
       
       
-
+      
     },
     getData() {
     axios
