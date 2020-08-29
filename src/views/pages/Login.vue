@@ -1,5 +1,8 @@
 <template>
+<div>
+  <Header/>
   <div class="c-app flex-row align-items-center">
+    
     <CContainer>
       <CRow class="justify-content-center">
         <CCol md="8">
@@ -63,13 +66,18 @@
       </CRow>
     </CContainer>
   </div>
+</div>
 </template>
 
 <script>
 import router from 'vue-router'
+import Header from '../../containers/Site/Header'
 import axios from 'axios'
 export default {
   name: 'Login',
+  components: {
+    Header
+  },
   data () {
     return {
       info: null,

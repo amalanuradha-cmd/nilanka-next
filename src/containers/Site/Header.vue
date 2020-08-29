@@ -1,7 +1,12 @@
 <template>
   <CNavbar expandable="md" type="dark" color="dark" class="text-white">
     <CToggler in-navbar @click="collapsed = !collapsed"/>
-    <CNavbarBrand href="#">NavBar</CNavbarBrand>
+    <img
+            src="img/logo.png"
+            width="100px"
+            class="img-fluid"
+          />
+    <!-- <CNavbarBrand href="#">NavBar</CNavbarBrand> -->
     <CCollapse :show="collapsed" navbar>
       <CNavbarNav>
         <CNavItem href="#">Link</CNavItem>
@@ -37,31 +42,30 @@
             <CDropdownItem>FA</CDropdownItem>
         </CDropdown> -->
       
-        <CDropdown
-          nav
-          togglerText="User"
-          placement="bottom-end"
-        >
-          <CDropdownItem>Profile</CDropdownItem>
-          <CDropdownItem>Signout</CDropdownItem>
-        </CDropdown>
-         <header class="navbar navbar-light">
-            <button class="navbar-toggler aside-menu-toggler" type="button" data-toggle="aside-menu-show">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </header>
+        
+         <TheHeaderDropdownAccnt/>
       </CNavbarNav>
     </CCollapse>
   </CNavbar>
 </template>
 
 <script>
+import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
+import router from 'vue-router'
 export default {
     name: "siteHeader",
+    components: {
+        TheHeaderDropdownAccnt
+    },
     data() {
     return {
       collapsed: false,
     };
   },
+  methods: {
+      signin() {
+          this.$router.push({ path: '/login' })
+      }
+  }
 }
 </script>
