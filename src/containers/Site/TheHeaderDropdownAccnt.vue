@@ -9,7 +9,7 @@
         <div style="padding-left: 20px;color: white;">
       <CHeaderNavLink style="color: white;">
         <div>
-          <CIcon name="cilList" style="color: white;"/>
+          <CIcon name="cilMenu" style="color: white;" size="xl"/>
         </div>
       </CHeaderNavLink>
         </div>
