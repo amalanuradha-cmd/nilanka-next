@@ -51,6 +51,7 @@ const Modals = () => import('@/views/notifications/Modals')
 const Page404 = () => import('@/views/pages/Page404')
 const Page500 = () => import('@/views/pages/Page500')
 const Login = () => import('@/views/pages/Login')
+const Home = () => import('@/views/pages/Home')
 const Register = () => import('@/views/pages/Register')
 
 // Users
@@ -69,19 +70,24 @@ let router= new Router({
 function configRoutes () {
   return [
     {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/',
+      path: '/dash',
       redirect: '/dashboard',
-      name: 'Home',
+      name: 'Dashboard',
       component: TheContainer,
       children: [
         {
-          path: 'dashboard',
-          name: 'Dashboard',
+          path: '/dashboard',
+          name: 'Dashboard1',
           component: Dashboard
         },
         {
@@ -332,7 +338,7 @@ function configRoutes () {
         },
         {
           path: '/login',
-          name: 'Login',
+          name: 'Login1',
           component: Login
         },
         {
@@ -346,7 +352,7 @@ function configRoutes () {
 }
 router.beforeEach((to, from, next) => {
   
-  if (to.name !== 'Register' && to.name !== 'Login' && !localStorage.getItem("token")) next({ name: 'Login' })
+  if (to.name !== 'Home' && to.name !== 'Register' && to.name !== 'Login' && !localStorage.getItem("token")) next({ name: 'Login' })
   
   else next()
 })

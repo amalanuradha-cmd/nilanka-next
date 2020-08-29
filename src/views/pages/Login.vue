@@ -92,7 +92,7 @@ export default {
       .then(response => {this.loginReponse = response;
       localStorage.setItem("token", this.loginReponse.data.access_token);
           if (this.loginReponse.data.access_token && this.loginReponse.data.user.role == 'admin')
-            this.$router.push({ path: '/dashboard' })
+            this.$router.push({ path: '/dash' })
           else 
               this.$router.push({ path: '/login' })  
         console.log("roles",this.loginReponse.data);
