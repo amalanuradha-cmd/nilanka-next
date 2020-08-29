@@ -21,6 +21,9 @@
     <CDropdownItem @click="signIn()">
       <CIcon name="cil-lock-locked" /> Sign In
     </CDropdownItem>
+    <CDropdownItem @click="signUp()">
+      <CIcon name="cil-lock-locked" /> Register
+    </CDropdownItem>
   </CDropdown>
 </template>
 
@@ -39,6 +42,9 @@ export default {
     signIn() {
       
       this.$router.push({ path: '/login' })
+    },
+    signUp() {
+        this.$router.push({ path: '/register' })
     }
   }
 }
