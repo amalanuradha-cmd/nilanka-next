@@ -64,16 +64,18 @@
       </CRow>
     </CContainer>
   </div>
+  <siteFooter/>
 </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Header from '../../containers/Site/Header'
+import siteFooter from '../../containers/Site/Footer'
 export default {
   name: 'Register',
   components: {
-      Header
+      Header, siteFooter
   },
   data () {
     return {
