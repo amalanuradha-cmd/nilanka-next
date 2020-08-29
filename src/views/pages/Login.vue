@@ -1,7 +1,7 @@
 <template>
 <div>
   <Header/>
-  <div class="c-app flex-row align-items-center">
+  <div class="c-app flex-row align-items-center" style="margin-top: 100px;">
     
     <CContainer>
       <CRow class="justify-content-center">

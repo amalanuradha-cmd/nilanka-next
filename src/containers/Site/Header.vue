@@ -1,5 +1,7 @@
 <template>
-  <CNavbar expandable="md" type="dark" color="dark" class="text-white" style="padding: 15px;">
+  <CNavbar expandable="md" type="dark" color="dark" class="text-white" style="padding: 15px;position: fixed;
+  top: 0;
+  width: 100%;z-index: 999;">
     <CToggler in-navbar @click="collapsed = !collapsed"/>
     <router-link
   to="/"><img

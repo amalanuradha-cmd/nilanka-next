@@ -1,6 +1,8 @@
 <template>
     <div>
-        <siteHeader/>
+        <siteHeader  
+        
+        />
         <div style="position: relative;">
         <carousal>
             
