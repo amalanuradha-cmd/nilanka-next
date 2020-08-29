@@ -4,6 +4,10 @@
   <div class="c-app flex-row align-items-center" style="margin-top: 100px;">
     
     <CContainer>
+      
+<div class="alert alert-danger" role="alert" v-if="success">
+  not allowed
+</div>
       <CRow class="justify-content-center">
         <CCol md="8">
           <CCardGroup>
@@ -83,6 +87,7 @@ export default {
   },
   data () {
     return {
+      success: false,
       info: null,
       user: {
         email: "",
@@ -104,24 +109,31 @@ export default {
       //  Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZGI2ZTNmNDFhNDEzYmI2NzM0ZjA3ODY1ZTkyOWE0OTRiODdiMzgyMTIwOTg3MzY1NzUyNzdmZjYwODkzZGEyMGNlZDEzYTFjYzM5ZmM5NDYiLCJpYXQiOjE1OTg3MDA5MzEsIm5iZiI6MTU5ODcwMDkzMSwiZXhwIjoxNjMwMjM2OTMxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.VACEqlWaeDeeZIZ5BiGIqpAzfsqsdeBxhs9v5gmtsrMRNBUHwHmmmOY7_Q8Ari21oFdFfr2vjomN-v073XOxeKoa4yrrjsPxHhCr2c4eaWCq9bpDVSwZI8mhpHPUL3hywynbDRHkkSirZ00raIq7ereSiAmor6F49Dtl98rDZedKKpTpGe936-SMhISVdQYQIENE-7xGoiyPJSy0jGP_B93nITwCJYcs7a7DlSAI7Epu11yXHocnE4cPaVqYBmoEdTjyqGN8pl1fY8B2XXmCEjGXwbceNNxrPYbpWEmCj96ZJ6a7yZTnX3AWjsgxdfL8K1gES8P7JTnPnFs_hkbUNurZxIv-PnBgKbZqv2X2rdB18ckyefueT5ZdGD_EMwGaSbjpNq4ngExD0S3aTvwbaWOVtG2Iy3nEEpVghuIKuf6DKKBx00iPYfwxx_KsVt1IOyzqkTRQQ3wxmk_T3_FZK0hiuC6s96FdE1zh5s87Q5fHA2OAxo3nfS8C5Oki2wxT5hlZi9fzH5CD9B8jDiD77n2TYeiMefPof6vl2g_beMJukAwWl4D6hDWCe6PZcPRJAdBQ3rUH3L-HquWKaESBzZR9xinBKeekNRNj4w3k4ForaZyxIzpp1rUQfbAw-HvbXuPjPC5wJhCnKpqNaaMfT137b7HBbm5QzwR-O-0tP_0'
       }
     
-      axios
+     axios
       .post('http://192.168.8.101:8000/api/user/login', this.user, {
     headers: headers
   })
       .then(response => {this.loginReponse = response;
       localStorage.setItem("token", this.loginReponse.data.access_token);
       
-          if (this.loginReponse.data.access_token && this.loginReponse.data.user.role == 'admin'){
+      if (this.loginReponse.data && this.loginReponse.data.access_token && this.loginReponse.data.user.role == 'admin'){
 this.loginReponse = this.loginReponse.data.access_token;
       this.$router.push({ path: '/dash' })
+      
           }
       
-          else 
-              this.$router.push({ path: '/login' })  
+              
+                
         console.log("roles",this.loginReponse.data);
         // console.log(localStorage.getItem('token'));
       
-      });
+      }).catch(error => {
+    console.log(error.response)
+    console.log("no success");
+            this.success = true;
+            
+});;
+     
       
       
       
