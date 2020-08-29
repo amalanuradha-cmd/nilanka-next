@@ -92,7 +92,7 @@ export default {
   methods: {
     signUp: function () {
       axios
-      .post('http://localhost:8000/api/user/create', this.user)
+      .post('http://192.168.8.101:8000/api/user/create', this.user)
       .then(response => {this.registerReponse = response;
      
       
