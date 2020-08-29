@@ -20,19 +20,21 @@
       <!-- Right aligned nav items -->
       <CNavbarNav class="ml-auto">
         <CForm inline>
+            
           <CInput
-            class="mr-sm-2"
+            class="mr-sm-2 mb-0"
             placeholder="Search"
             size="sm"
           />
           <CButton
             color="secondary"
             size="sm" 
-            class="my-2 my-sm-0" 
+            class="my-2 my-sm-0 mr-sm-2" 
             type="submit"
           >
             Search
           </CButton>
+            
         </CForm>
 
         <!-- <CDropdown

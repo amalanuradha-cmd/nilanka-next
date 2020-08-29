@@ -6,7 +6,7 @@
     add-menu-classes="pt-0"
   >
     <template #toggler>
-        <div style="padding-left: 20px;color: white;">
+        <div style="color: white;">
       <CHeaderNavLink style="color: white;">
         <div>
           <CIcon name="cilMenu" style="color: white;" size="xl"/>
