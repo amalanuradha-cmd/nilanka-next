@@ -1,7 +1,7 @@
 <template>
     <div>
         <siteHeader/>
-        <siteFooter/>
+        <!-- <siteFooter/> -->
     </div>
 </template>
 <script>

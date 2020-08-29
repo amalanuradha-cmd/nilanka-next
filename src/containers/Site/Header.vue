@@ -1,5 +1,5 @@
 <template>
-  <CNavbar expandable="md" type="dark" color="dark" class="text-white">
+  <CNavbar expandable="md" type="dark" color="dark" class="text-white" style="padding: 15px;">
     <CToggler in-navbar @click="collapsed = !collapsed"/>
     <img
             src="img/logo.png"
@@ -51,11 +51,13 @@
 
 <script>
 import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
+
 import router from 'vue-router'
 export default {
     name: "siteHeader",
     components: {
-        TheHeaderDropdownAccnt
+        TheHeaderDropdownAccnt,
+        
     },
     data() {
     return {

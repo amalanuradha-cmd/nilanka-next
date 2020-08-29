@@ -6,11 +6,13 @@
     add-menu-classes="pt-0"
   >
     <template #toggler>
-      <CHeaderNavLink>
-        <div class="c-avatar">
-          
+        <div style="padding-left: 20px;color: white;">
+      <CHeaderNavLink style="color: white;">
+        <div>
+          <CIcon name="cilList" style="color: white;"/>
         </div>
       </CHeaderNavLink>
+        </div>
     </template>
     <CDropdownHeader tag="div" class="text-center" color="light">
       <strong>Account</strong>
