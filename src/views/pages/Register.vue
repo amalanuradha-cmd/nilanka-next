@@ -85,7 +85,7 @@ export default {
         email: '',
         password: '',
         password_confirmation: '',
-        role: 'admin'
+        role: 'cust'
       }
     }
   },

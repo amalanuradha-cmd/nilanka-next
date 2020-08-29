@@ -1,11 +1,13 @@
 <template>
   <CNavbar expandable="md" type="dark" color="dark" class="text-white" style="padding: 15px;">
     <CToggler in-navbar @click="collapsed = !collapsed"/>
-    <img
+    <router-link
+  to="/"><img
             src="img/logo.png"
             width="100px"
             class="img-fluid"
           />
+    </router-link>
     <!-- <CNavbarBrand href="#">NavBar</CNavbarBrand> -->
     <CCollapse :show="collapsed" navbar>
       <CNavbarNav>
