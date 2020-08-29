@@ -66,17 +66,19 @@
       </CRow>
     </CContainer>
   </div>
+  <Footer/>
 </div>
 </template>
 
 <script>
 import router from 'vue-router'
 import Header from '../../containers/Site/Header'
+import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
 export default {
   name: 'Login',
   components: {
-    Header
+    Header, Footer
   },
   data () {
     return {

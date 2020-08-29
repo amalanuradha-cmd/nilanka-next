@@ -22,7 +22,7 @@
       <CIcon name="cil-lock-locked" /> Sign In
     </CDropdownItem>
     <CDropdownItem @click="signUp()">
-      <CIcon name="cil-lock-locked" /> Register
+      <CIcon name="cil-lock-locked" /> Sign Up
     </CDropdownItem>
   </CDropdown>
 </template>
