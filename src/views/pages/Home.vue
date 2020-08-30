@@ -4,7 +4,7 @@
         
         />
         <div style="position: relative;margin-top: 100px;">
-        <carousal>
+        <carousal data-aos="zoom-in">
             
         </carousal>
         <div class="w-50" style="position: absolute;left: 3em;top: 6em;font-size: 3vw;">
@@ -22,15 +22,71 @@
         </h1>
        
         </div>
-       
+
+        <div>
+            <CContainer style="margin-top:  60px;" >
+    <CRow>
+
+      <CCol sm="4">
+        <CCard color="dark" class="text-white" data-aos="zoom-in">
+          <CCardHeader>
+            Standard usage
+          </CCardHeader>
+          <CCardBody>
+            This content is in card body component.
+          </CCardBody>
+          <CCardFooter color="dark">
+            Standard Footer.
+          </CCardFooter>
+        </CCard>
+        
+      
+      </CCol>
+      <CCol sm="4">
+        <CCard color="dark" class="text-white" data-aos="zoom-in">
+          <CCardHeader>
+            Standard usage
+          </CCardHeader>
+          <CCardBody>
+            This content is in card body component.
+          </CCardBody>
+          <CCardFooter color="dark">
+            Standard Footer.
+          </CCardFooter>
+        </CCard>
+        
+      
+      </CCol>
+      <CCol sm="4">
+        <CCard color="dark" class="text-white" data-aos="zoom-in">
+          <CCardHeader>
+            Standard usage
+          </CCardHeader>
+          <CCardBody>
+            This content is in card body component.
+          </CCardBody>
+          <CCardFooter color="dark">
+            Standard Footer.
+          </CCardFooter>
+        </CCard>
+     
+      </CCol>
+    </CRow> 
+            </CContainer>
+        </div>
         <siteFooter/>
     </div>
 </template>
 <script>
+
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import VueResponsiveText from 'vue-responsive-text'
 import siteFooter from '../../containers/Site/Footer'
 import siteHeader from '../../containers/Site/Header'
 import carousal from '../widgets/carousal'
+AOS.init();
+
 export default {
     
     name: 'siteHome',

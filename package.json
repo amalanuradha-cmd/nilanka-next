@@ -39,6 +39,7 @@
     "@coreui/vue": "^3.1.1",
     "@coreui/vue-chartjs": "^1.0.5",
     "@fortawesome/vue-fontawesome": "^0.1.10",
+    "aos": "^2.3.4",
     "axios": "^0.20.0",
     "vue": "~2.6.11",
     "vue-responsive-text": "^0.1.4",
