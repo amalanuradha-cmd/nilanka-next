@@ -72,6 +72,7 @@
 import axios from 'axios'
 import Header from '../../containers/Site/Header'
 import siteFooter from '../../containers/Site/Footer'
+import api from '../../router/api'
 export default {
   name: 'Register',
   components: {
@@ -92,7 +93,7 @@ export default {
   methods: {
     signUp: function () {
       axios
-      .post('http://192.168.8.101:8000/api/user/create', this.user)
+      .post(api + '/user/create', this.user)
       .then(response => {this.registerReponse = response;
      
       

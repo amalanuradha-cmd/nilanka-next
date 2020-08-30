@@ -80,6 +80,7 @@ import router from 'vue-router'
 import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
+import api from '../../router/api'
 export default {
   name: 'Login',
   components: {
@@ -110,7 +111,7 @@ export default {
       }
     
      axios
-      .post('http://192.168.8.101:8000/api/user/login', this.user, {
+      .post(api + '/user/login', this.user, {
     headers: headers
   })
       .then(response => {this.loginReponse = response;
