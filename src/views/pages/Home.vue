@@ -85,7 +85,9 @@ import VueResponsiveText from 'vue-responsive-text'
 import siteFooter from '../../containers/Site/Footer'
 import siteHeader from '../../containers/Site/Header'
 import carousal from '../widgets/carousal'
-AOS.init();
+AOS.init({
+    once: true,
+});
 
 export default {
     
