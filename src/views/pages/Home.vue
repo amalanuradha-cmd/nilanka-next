@@ -4,7 +4,7 @@
         
         />
         <div style="position: relative;margin-top: 100px;">
-        <carousal style="height: 75vw;">
+        <carousal style="height: 70vw;">
             
         </carousal>
         <div class="w-50" style="position: absolute;left: 3em;top: 6em;font-size: 3vw;">
@@ -24,7 +24,7 @@
         </div>
 
         <div>
-            <CContainer style="margin-top:  60px;" >
+            <CContainer >
     <CRow>
 
       <CCol sm="4">
@@ -87,7 +87,7 @@ import siteHeader from '../../containers/Site/Header'
 import carousal from '../widgets/carousal'
 AOS.init({
     once: false,
-    duration: 800,
+    duration: 500,
     anchorPlacement: 'top-bottom',  
 });
 

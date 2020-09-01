@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Lcobucci\JWT\Parser;
+use DB;
 
 class LoginController extends Controller
 {
@@ -92,5 +94,12 @@ class LoginController extends Controller
     {
         
         return response()->json($request->user());
-    }        
+    }    
+
+    public function logout (Request $request) {
+        $token = $request->user()->token();
+        $token->revoke();
+        $response = ['message' => 'You have been successfully logged out!'];
+        return response($response, 200);
+    }
 }
