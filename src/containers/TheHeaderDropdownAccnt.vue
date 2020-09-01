@@ -67,6 +67,8 @@
 
 <script>
 import router from 'vue-router'
+import axios from 'axios'
+import api from '../router/api'
 export default {
   name: 'TheHeaderDropdownAccnt',
   data () {
@@ -76,6 +78,21 @@ export default {
   },
   methods: {
     logout() {
+      let token = localStorage.getItem('token');
+        let headers = {
+        Accept: 'application/json',
+      Authorization: 'Bearer '+ token
+      ,
+      }
+    
+     axios
+      .get(api + '/logout', {
+    headers: headers
+  })
+      .then(response => {this.loginReponse = response;
+      
+      
+      })
       localStorage.removeItem("token");
       this.$router.push({ path: '/login' })
     }

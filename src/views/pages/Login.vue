@@ -116,7 +116,7 @@ export default {
   })
       .then(response => {this.loginReponse = response;
       localStorage.setItem("token", this.loginReponse.data.access_token);
-      
+      console.log("token",this.loginReponse.data.access_token);
       if (this.loginReponse.data && this.loginReponse.data.access_token && this.loginReponse.data.user.role == 'admin'){
 this.loginReponse = this.loginReponse.data.access_token;
       this.$router.push({ path: '/dash' })
@@ -125,8 +125,8 @@ this.loginReponse = this.loginReponse.data.access_token;
       
               
                 
-        console.log("roles",this.loginReponse.data);
-        // console.log(localStorage.getItem('token'));
+        
+        
       
       }).catch(error => {
     console.log(error.response)
