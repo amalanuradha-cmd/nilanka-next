@@ -28,7 +28,7 @@
     <CRow>
 
       <CCol sm="4">
-        <CCard color="dark" class="text-white" data-aos="zoom-in">
+        <CCard color="light"  class="text-white" data-aos="zoom-in">
           <CCardHeader>
             Standard usage
           </CCardHeader>
@@ -43,7 +43,7 @@
       
       </CCol>
       <CCol sm="4">
-        <CCard color="dark" class="text-white" data-aos="zoom-in">
+        <CCard color="light" class="text-white" data-aos="zoom-in">
           <CCardHeader>
             Standard usage
           </CCardHeader>
@@ -58,7 +58,7 @@
       
       </CCol>
       <CCol sm="4">
-        <CCard color="dark" class="text-white" data-aos="zoom-in">
+        <CCard color="light" class="text-white" data-aos="zoom-in">
           <CCardHeader>
             Standard usage
           </CCardHeader>
