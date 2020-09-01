@@ -4,7 +4,7 @@
         
         />
         <div style="position: relative;margin-top: 100px;">
-        <carousal>
+        <carousal style="height: 75vw;">
             
         </carousal>
         <div class="w-50" style="position: absolute;left: 3em;top: 6em;font-size: 3vw;">
@@ -87,7 +87,8 @@ import siteHeader from '../../containers/Site/Header'
 import carousal from '../widgets/carousal'
 AOS.init({
     once: false,
-    duration: 800, 
+    duration: 800,
+    anchorPlacement: 'top-bottom',  
 });
 
 export default {

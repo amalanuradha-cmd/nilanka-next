@@ -8,16 +8,14 @@
   >
     <CCarouselItem
       captionHeader="First Slide"
-      image="https://picsum.photos/1024/480/?image=52"
+      image="delivery/del1.png"
       captionText="Nulla vitae elit libero, a pharetra augue mollis interdum."
     />
     <CCarouselItem
-      captionHeader="Blank page"
-      :image="{ placeholderColor: 'grey' }"
-      captionText="Nulla vitae elit libero, a pharetra augue mollis interdum."
+     image="delivery/del2.jpg"
     />
     <CCarouselItem
-     image="https://picsum.photos/1024/480/?image=54"
+     image="delivery/del3.png"
     />
   </CCarousel>
 </template>
