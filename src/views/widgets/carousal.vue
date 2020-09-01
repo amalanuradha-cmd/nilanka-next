@@ -2,7 +2,8 @@
     <CCarousel
     arrows
     indicators
-    animate
+    animate="true"
+    interval="2000"
     
     
   >
