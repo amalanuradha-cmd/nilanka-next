@@ -60,6 +60,7 @@ import {
   cilLightbulb,
   cilList,
   cilMenu,
+  cilHamburgerMenu,
   cilLocationPin,
   cilLockLocked,
   cilMagnifyingGlass,
@@ -86,6 +87,7 @@ export const iconsSet = Object.assign(
   {},
   { logo },
   {
+    
     cilArrowRight,
     cilBan,
     cilBasket,
@@ -114,6 +116,7 @@ export const iconsSet = Object.assign(
     cilLightbulb,
     cilList,
     cilMenu,
+    cilHamburgerMenu,
     cilLocationPin,
     cilLockLocked,
     cilMagnifyingGlass,

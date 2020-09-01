@@ -9,14 +9,14 @@
         <div style="color: white;">
       <CHeaderNavLink style="color: white;">
         <div>
-          <CIcon name="cilMenu" style="color: white;" size="xl"/>
+          <CIcon name="cilHamburgerMenu" style="color: white;" size="xl"/>
         </div>
       </CHeaderNavLink>
         </div>
     </template>
-    <CDropdownHeader tag="div" class="text-center" color="light">
+    <!-- <CDropdownHeader tag="div" class="text-center" color="light">
       <strong>Account</strong>
-    </CDropdownHeader>
+    </CDropdownHeader> -->
     
     <CDropdownItem @click="signIn()">
       <CIcon name="cil-lock-locked" /> Sign In

@@ -4,7 +4,7 @@
     indicators
     animate
     
-    style="height: 100vh;"
+    
   >
     <CCarouselItem
       captionHeader="First Slide"

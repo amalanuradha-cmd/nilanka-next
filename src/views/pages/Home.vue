@@ -4,7 +4,7 @@
         
         />
         <div style="position: relative;margin-top: 100px;">
-        <carousal data-aos="zoom-in">
+        <carousal>
             
         </carousal>
         <div class="w-50" style="position: absolute;left: 3em;top: 6em;font-size: 3vw;">
@@ -86,7 +86,8 @@ import siteFooter from '../../containers/Site/Footer'
 import siteHeader from '../../containers/Site/Header'
 import carousal from '../widgets/carousal'
 AOS.init({
-    once: true,
+    once: false,
+    duration: 800, 
 });
 
 export default {
