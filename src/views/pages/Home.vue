@@ -3,7 +3,7 @@
         <siteHeader  
         
         />
-        <div style="position: relative;margin-top: 100px;">
+        <div style="position: relative;">
         <carousal style="height: 70vw;">
             
         </carousal>

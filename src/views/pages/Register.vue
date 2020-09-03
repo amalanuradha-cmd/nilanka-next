@@ -1,7 +1,7 @@
 <template>
 <div>
    <Header/>
-  <div class="d-flex align-items-center min-vh-100" style="margin-top: 100px;">
+  <div class="d-flex align-items-center min-vh-100">
 
     <CContainer fluid>
       <CRow class="justify-content-center">
