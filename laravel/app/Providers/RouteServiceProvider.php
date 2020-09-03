@@ -32,7 +32,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
 
+        // resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
         parent::boot();
+
+        
+        
+        
     }
 
     /**
@@ -72,9 +77,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
+        
         Route::prefix('api/v1')
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+
+            
     }
 }
