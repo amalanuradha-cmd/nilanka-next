@@ -53,6 +53,7 @@ const Page500 = () => import('@/views/pages/Page500')
 const Login = () => import('@/views/pages/Login')
 const Home = () => import('@/views/pages/Home')
 const Register = () => import('@/views/pages/Register')
+const AddOrder = () => import('@/views/pages/AddOrder')
 
 // Users
 const Users = () => import('@/views/users/Users')
@@ -345,6 +346,11 @@ function configRoutes () {
           path: '/register',
           name: 'Register',
           component: Register
+        },
+        {
+          path: '/addOrder',
+          name: 'addOrder',
+          component: AddOrder
         }
       ]
     }
