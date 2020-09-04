@@ -16,7 +16,7 @@
             NO #01 Delivery Service <br> in Sri Lanka.
         
         </h1>
-        <h3  style="color: white;fomnt-size: 1vw;">
+        <h3  style="color: white;font-size: 2vw;">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin orci ipsum, accumsan eu elementum ut, tristique id sem. Aenean hendrerit et elit sit amet dapibus. Donec dictum gravida turpis placerat lobortis.
       </h3>
       <div class="input-group">
