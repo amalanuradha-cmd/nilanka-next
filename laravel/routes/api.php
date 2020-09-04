@@ -34,4 +34,3 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::resource('orders', 'OrderController');
 
-Route::get('orders/find/{uuid}', 'OrderController@tryFindUOrFail');

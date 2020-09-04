@@ -73,15 +73,7 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
-        $order = $this->orderRepository->find($id);
-
-        if (empty($order)) {
-            Flash::error('Order not found');
-
-            return redirect(route('orders.index'));
-        }
-
-        return view('orders.show')->with('order', $order);
+        return Order::findOrFail($id);
     }
 
     /**
@@ -155,9 +147,5 @@ class OrderController extends AppBaseController
         return redirect(route('orders.index'));
     }
 
-    public function tryFindUOrFail($uuid)
-    {
-       return  $order = Order::findOrFail($uuid);
-        return (string) $order->orderedUuid();
-    }
+    
 }

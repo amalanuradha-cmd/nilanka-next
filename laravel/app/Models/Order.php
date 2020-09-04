@@ -45,6 +45,20 @@ class Order extends Model
 
     protected $guarded = []; // YOLO
 
+    protected $hidden = [
+        'id'
+    ];
+    
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     protected static function boot()
     {
         parent::boot();
