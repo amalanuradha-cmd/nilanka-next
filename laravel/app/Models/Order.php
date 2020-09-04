@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 use Illuminate\Database\Eloquent\Model as Model;
 
@@ -35,6 +36,8 @@ class Order extends Model
 {
 
     public $table = 'orders';
+
+    private $uuid;
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -46,20 +49,16 @@ class Order extends Model
     {
         parent::boot();
 
-        static::creating(function ($post) {
-            $post->{$post->getKeyName()} = (string) Str::uuid();
+        static::creating(function (Model $model) {
+            $model->setAttribute($model->getKeyName(),(string) Uuid::uuid4());
         });
     }
 
-    public function getIncrementing()
-    {
-        return false;
-    }
+    public $primaryKey = 'uuid';
 
-    public function getKeyType()
-    {
-        return 'string';
-    }
+    public $keyType = 'string';
+
+    public $incrementing = false;
 
     public $fillable = [
         'customer',

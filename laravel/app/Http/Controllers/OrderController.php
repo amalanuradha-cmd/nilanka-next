@@ -58,9 +58,10 @@ class OrderController extends AppBaseController
 
         $order = $this->orderRepository->create($input);
 
-        Flash::success('Order saved successfully.');
+        // return (string) $order->id;
 
-        return redirect(route('orders.index'));
+        return $order;
+
     }
 
     /**
@@ -156,6 +157,7 @@ class OrderController extends AppBaseController
 
     public function tryFindUOrFail($uuid)
     {
-        return Order::find($uuid);
+       return  $order = Order::findOrFail($uuid);
+        return (string) $order->orderedUuid();
     }
 }

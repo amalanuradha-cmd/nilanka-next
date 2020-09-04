@@ -8,7 +8,7 @@ class CreateOrderTable extends Migration {
 	public function up()
 	{
 		Schema::create('orders', function(Blueprint $table) {
-			$table->uuid('id')->primary();
+			$table->uuid('uuid')->primary();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('customer')->nullable();
