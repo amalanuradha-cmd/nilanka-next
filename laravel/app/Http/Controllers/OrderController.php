@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Order;
 
 class OrderController extends AppBaseController
 {
@@ -151,5 +152,10 @@ class OrderController extends AppBaseController
         Flash::success('Order deleted successfully.');
 
         return redirect(route('orders.index'));
+    }
+
+    public function tryFindUOrFail($uuid)
+    {
+        return Order::find($uuid);
     }
 }
