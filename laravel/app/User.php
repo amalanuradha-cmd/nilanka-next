@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'facebook_id'
     ];
 
     protected $guard_name = 'api';
@@ -42,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order', 'user_id');
+    }
 }

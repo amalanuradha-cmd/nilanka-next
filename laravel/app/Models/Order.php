@@ -75,6 +75,7 @@ class Order extends Model
     public $incrementing = false;
 
     public $fillable = [
+        'user_id',
         'customer',
         'barcode',
         'type',
@@ -104,6 +105,7 @@ class Order extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'string',
         'customer' => 'string',
         'barcode' => 'string',
         'type' => 'string',
@@ -132,6 +134,7 @@ class Order extends Model
      * @var array
      */
     public static $rules = [
+        'user_id' => 'required|string|max:255',
         'customer' => 'nullable|string|max:255',
         'barcode' => 'nullable|string|max:255',
         'type' => 'nullable|string|max:255',
@@ -154,5 +157,11 @@ class Order extends Model
         'sender_message' => 'nullable|string|max:255'
     ];
 
-    
+    /**
+     * Get the post that owns the comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
