@@ -32,5 +32,5 @@ Route::group(['middleware' => ['auth']], function() {
     // URL::forceScheme('https');
    
 
-Route::resource('orders', 'OrderController');
+    Route::middleware('auth:api')->resource('orders', 'OrderController');
 

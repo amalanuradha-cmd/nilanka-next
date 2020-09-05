@@ -52,11 +52,15 @@ class OrderController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateOrderRequest $request)
+    public function store(Request $request)
     {
+        $user_id = $request->user()->id;
+        $request->request->add(['user_id' => $user_id]); 
         $input = $request->all();
-
-        $order = $this->orderRepository->create($input);
+        
+        // return $input;
+      
+        $order = Order::create($input);
 
         // return (string) $order->id;
 
