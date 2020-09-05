@@ -147,5 +147,10 @@ class OrderController extends AppBaseController
         return redirect(route('orders.index'));
     }
 
+    public function myOrders(Request $request){
+        $user = $request->user();
+        $orders = Order::where('user_id', '=', $user->id)->get();
+        return $orders;
+    }
     
 }
