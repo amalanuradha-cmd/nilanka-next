@@ -66,7 +66,7 @@ class OrderController extends AppBaseController
         
         // return (string) $order->id;
         
-     $barcode = DNS1D::getBarcodePNGPath($order->uuid,'PHARMA2T');
+     $barcode = DNS1D::getBarcodeSVG($order->uuid,'PHARMA2T');
         $order->barcode = $barcode;
         $order->save();
         return $order;
@@ -81,6 +81,7 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
+        
         return Order::with('user')->findOrFail($id);
     }
 
