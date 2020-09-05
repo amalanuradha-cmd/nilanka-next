@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\Order;
+use Milon\Barcode\Facades\DNS1DFacade as DNS1D;
 
 class OrderController extends AppBaseController
 {
@@ -54,6 +55,7 @@ class OrderController extends AppBaseController
      */
     public function store(Request $request)
     {
+        
         $user_id = $request->user()->id;
         $request->request->add(['user_id' => $user_id]); 
         $input = $request->all();
@@ -61,11 +63,13 @@ class OrderController extends AppBaseController
         // return $input;
       
         $order = Order::create($input);
-
+        
         // return (string) $order->id;
-
+        
+     $barcode = DNS1D::getBarcodePNGPath($order->uuid,'PHARMA2T');
+        $order->barcode = $barcode;
+        $order->save();
         return $order;
-
     }
 
     /**

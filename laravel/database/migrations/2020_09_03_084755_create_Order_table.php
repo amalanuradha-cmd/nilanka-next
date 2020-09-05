@@ -9,11 +9,12 @@ class CreateOrderTable extends Migration {
 	{
 		Schema::create('orders', function(Blueprint $table) {
 			$table->bigIncrements('id');
-            $table->uuid('uuid')->index();
+			$table->uuid('uuid')->index();
+			$table->string('user_id')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('customer')->nullable();
-			$table->string('barcode')->nullable();
+			$table->longText('barcode')->nullable();
 			$table->string('type');
 			$table->string('address')->nullable();
 			$table->string('date')->nullable();

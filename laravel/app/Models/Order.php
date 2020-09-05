@@ -45,9 +45,7 @@ class Order extends Model
 
     protected $guarded = []; // YOLO
 
-    protected $hidden = [
-        'id'
-    ];
+    
     
     /**
      * Get the route key for the model.
@@ -75,6 +73,7 @@ class Order extends Model
     public $incrementing = false;
 
     public $fillable = [
+        'id',
         'user_id',
         'customer',
         'barcode',
