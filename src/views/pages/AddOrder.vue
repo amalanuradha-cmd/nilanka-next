@@ -25,7 +25,7 @@
     <CRow>
       <CCol sm="12" class="form-group">
         <label>Order Type</label>
-        <CInputRadioGroup :name="type" :inline="true" :options="types">
+        <CInputRadioGroup :checked.sync="type"  :inline="true" :options="types">
           
         </CInputRadioGroup>
       </CCol>
@@ -72,6 +72,9 @@ export default {
     address: function (val) {
       console.log(val);
     },
+    type: function(val){
+      console.log(this.type);
+    }
   },
   computed: {
     // a computed getter
