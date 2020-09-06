@@ -67,9 +67,9 @@ class OrderController extends AppBaseController
         
         // return (string) $order->id;
         
-     $barcode = DNS1D::getBarcodeSVG($order->uuid,'PHARMA2T');
-        $order->barcode = $barcode;
-        $order->save();
+    //  $barcode = DNS1D::getBarcodeSVG($order->uuid,'PHARMA2T');
+    //     $order->barcode = $barcode;
+    //     $order->save();
 
         
         $orderAddress = new OrderAddress;
