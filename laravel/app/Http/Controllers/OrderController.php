@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\Order;
+use App\Models\OrderAddress;
 use Milon\Barcode\Facades\DNS1DFacade as DNS1D;
 
 class OrderController extends AppBaseController
@@ -69,7 +70,18 @@ class OrderController extends AppBaseController
      $barcode = DNS1D::getBarcodeSVG($order->uuid,'PHARMA2T');
         $order->barcode = $barcode;
         $order->save();
-        return $order;
+
+        
+        $orderAddress = new OrderAddress;
+        $orderAddress->street = $request->addressData['street'];
+        $orderAddress->city = $request->addressData['city'];
+        $orderAddress->postal_code = $request->addressData['postal_code'];
+        $orderAddress->date = $request->addressData['date'];
+        $orderAddress->time = $request->addressData['time'];
+        $orderAddress->order_uuid = $order->uuid;
+        $orderAddress->save();
+        return Order::with(['user', 'order_address'])->findOrFail($order->uuid);
+        
     }
 
     /**
