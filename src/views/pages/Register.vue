@@ -10,7 +10,7 @@
             <CCardBody class="p-4">
               <CForm>
                 <h1>Register</h1>
-                {{registerReponse}}
+                
                 <p class="text-muted">Create your account</p>
                 <CInput
                 v-model="user.name"

@@ -27,4 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // URL::forceScheme('https');
 
 
-Route::resource('orders', 'OrderController');
+
+
+
+
+Route::resource('orderAddresses', 'OrderAddressController');

@@ -53,7 +53,7 @@ export default {
       return this.userData.filter(param => param.key !== 'username')
     },
     username () {
-      return this.userData.filter(param => param.key === 'username')[0].value
+      return this.userData.filter(param => param.key === 'username')[0]
     }
   },
   methods: {

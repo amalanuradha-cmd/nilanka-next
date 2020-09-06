@@ -34,3 +34,5 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::middleware('auth:api')->resource('orders', 'OrderController');
 
+    Route::middleware('auth:api')->resource('orderAddresses', 'OrderAddressController');
+

@@ -163,4 +163,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function order_address()
+    {
+        return $this->hasOne('App\Models\OrderAddress', 'order_uuid', 'uuid');
+    }
 }
