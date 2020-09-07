@@ -78,7 +78,9 @@ export default {
   },
   methods: {
     logout() {
-      let token = localStorage.getItem('token');
+      let token = this.$store.state.token;
+      console.log("toekn", token);
+      this.$store.state.token = "";
         let headers = {
         Accept: 'application/json',
       Authorization: 'Bearer '+ token
@@ -93,7 +95,7 @@ export default {
       
       
       })
-      localStorage.removeItem("token");
+      this.$store.state.token = "";
       this.$router.push({ path: '/login' })
     }
   }

@@ -115,10 +115,13 @@ export default {
     headers: headers
   })
       .then(response => {this.loginReponse = response;
-      localStorage.setItem("token", this.loginReponse.data.access_token);
-      console.log("token",this.loginReponse.data.access_token);
-      if (this.loginReponse.data && this.loginReponse.data.access_token && this.loginReponse.data.user.role == 'admin'){
-this.loginReponse = this.loginReponse.data.access_token;
+      // localStorage.setItem("token", this.loginReponse.data.access_token);
+      this.$store.state.token = this.loginReponse.data.access_token;
+      // let token = $this.$store.state.token;
+      console.log("token",this.$store.state.token);
+      console.log("role", this.loginReponse.data.user.role);
+      if (this.loginReponse.data && this.$store.state.token  && this.loginReponse.data.user.role == 'admin'){
+console.log("dashboard");
       this.$router.push({ path: '/dash' })
       
           }
