@@ -69,6 +69,7 @@
 import router from 'vue-router'
 import axios from 'axios'
 import api from '../router/api'
+import ls from 'local-storage'
 export default {
   name: 'TheHeaderDropdownAccnt',
   data () {
@@ -78,9 +79,8 @@ export default {
   },
   methods: {
     logout() {
-      let token = this.$store.state.token;
-      console.log("toekn", token);
-      this.$store.state.token = "";
+      let token = ls.get('token')
+      
         let headers = {
         Accept: 'application/json',
       Authorization: 'Bearer '+ token
@@ -95,7 +95,7 @@ export default {
       
       
       })
-      this.$store.state.token = "";
+      ls.remove('token')
       this.$router.push({ path: '/login' })
     }
   }

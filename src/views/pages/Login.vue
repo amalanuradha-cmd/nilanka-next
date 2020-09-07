@@ -81,6 +81,7 @@ import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
 import api from '../../router/api'
+import ls from 'local-storage'
 export default {
   name: 'Login',
   components: {
@@ -107,7 +108,7 @@ export default {
       this.loginReponse = "set";
       let headers = {
         Accept: 'application/json'
-      //  Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZGI2ZTNmNDFhNDEzYmI2NzM0ZjA3ODY1ZTkyOWE0OTRiODdiMzgyMTIwOTg3MzY1NzUyNzdmZjYwODkzZGEyMGNlZDEzYTFjYzM5ZmM5NDYiLCJpYXQiOjE1OTg3MDA5MzEsIm5iZiI6MTU5ODcwMDkzMSwiZXhwIjoxNjMwMjM2OTMxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.VACEqlWaeDeeZIZ5BiGIqpAzfsqsdeBxhs9v5gmtsrMRNBUHwHmmmOY7_Q8Ari21oFdFfr2vjomN-v073XOxeKoa4yrrjsPxHhCr2c4eaWCq9bpDVSwZI8mhpHPUL3hywynbDRHkkSirZ00raIq7ereSiAmor6F49Dtl98rDZedKKpTpGe936-SMhISVdQYQIENE-7xGoiyPJSy0jGP_B93nITwCJYcs7a7DlSAI7Epu11yXHocnE4cPaVqYBmoEdTjyqGN8pl1fY8B2XXmCEjGXwbceNNxrPYbpWEmCj96ZJ6a7yZTnX3AWjsgxdfL8K1gES8P7JTnPnFs_hkbUNurZxIv-PnBgKbZqv2X2rdB18ckyefueT5ZdGD_EMwGaSbjpNq4ngExD0S3aTvwbaWOVtG2Iy3nEEpVghuIKuf6DKKBx00iPYfwxx_KsVt1IOyzqkTRQQ3wxmk_T3_FZK0hiuC6s96FdE1zh5s87Q5fHA2OAxo3nfS8C5Oki2wxT5hlZi9fzH5CD9B8jDiD77n2TYeiMefPof6vl2g_beMJukAwWl4D6hDWCe6PZcPRJAdBQ3rUH3L-HquWKaESBzZR9xinBKeekNRNj4w3k4ForaZyxIzpp1rUQfbAw-HvbXuPjPC5wJhCnKpqNaaMfT137b7HBbm5QzwR-O-0tP_0'
+      
       }
     
      axios
@@ -115,12 +116,11 @@ export default {
     headers: headers
   })
       .then(response => {this.loginReponse = response;
-      // localStorage.setItem("token", this.loginReponse.data.access_token);
-      this.$store.state.token = this.loginReponse.data.access_token;
-      // let token = $this.$store.state.token;
-      console.log("token",this.$store.state.token);
-      console.log("role", this.loginReponse.data.user.role);
-      if (this.loginReponse.data && this.$store.state.token  && this.loginReponse.data.user.role == 'admin'){
+      console.log(response);
+      ls.set('token', this.loginReponse.data.access_token);
+      
+      console.log("ls token",ls.get('token'));
+      if (this.loginReponse.data && ls.get('token') && this.loginReponse.data.user.role == 'admin'){
 console.log("dashboard");
       this.$router.push({ path: '/dash' })
       
@@ -132,8 +132,8 @@ console.log("dashboard");
         
       
       }).catch(error => {
-    console.log(error.response)
-    console.log("no success");
+    
+    
             this.success = true;
             
 });;

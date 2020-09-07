@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import ls from 'local-storage'
 
 import store from '../store'
 
@@ -359,8 +360,12 @@ function configRoutes () {
   ]
 }
 router.beforeEach((to, from, next) => {
-  
-  if (to.name !== 'Home' && to.name !== 'Register' && to.name !== 'Login' && !store.state.token) next({ name: 'Login' })
+  console.log("kk",ls.get('token'));
+  if (to.name !== 'Home' && to.name !== 'Register' && to.name !== 'Login' && !ls.get('token')) 
+  {
+    next({ name: 'Login' })
+  }
+    
   
   else next()
 })

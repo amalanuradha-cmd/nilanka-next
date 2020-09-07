@@ -10,7 +10,9 @@ const state = {
 }
 
 const mutations = {
-  
+  saveSingleUserConnections: (state, connections) =>
+       {state.token = connections;},
+
   toggleSidebarDesktop (state) {
     const sidebarOpened = [true, 'responsive'].includes(state.sidebarShow)
     state.sidebarShow = sidebarOpened ? false : 'responsive'
@@ -23,8 +25,13 @@ const mutations = {
     state[variable] = value
   }
 }
-
+const getters = {
+  token: state => {
+    return state.token
+  }
+}
 export default new Vuex.Store({
+  getters,
   state,
   mutations
 })
