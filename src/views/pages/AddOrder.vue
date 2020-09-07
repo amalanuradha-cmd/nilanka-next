@@ -22,6 +22,9 @@
         />
       </CCol>
     </CRow>
+    <div>
+      <hr/>
+    </div>
     <CRow>
       <CCol sm="12" class="form-group">
         <label>Order Type</label>
@@ -85,6 +88,56 @@
           </CCol>
         </CRow>
     </div>
+    <div>
+      <hr/>
+    </div>
+    <div>
+      <CRow>
+            <CCol sm="12" class="form-group">
+              <CInput
+              :value.sync="selectedAddress.street"
+                label="Recipient Mobile Phone"
+                placeholder="Contact No"
+              />
+            </CCol>
+          </CRow>
+        
+          <CRow>
+            <CCol sm="12" class="form-group">
+              <CInput
+              :value.sync="selectedAddress.street"
+                label="Recipient Name"
+                placeholder="Name of the Recipient"
+              />
+            </CCol>
+          </CRow>
+          <CRow>
+            <CCol sm="12" class="form-group">
+              <CInput
+              :value.sync="selectedAddress.street"
+                label="Dilivery Street"
+                placeholder="Pickup Street"
+              />
+            </CCol>
+          </CRow>
+        <CRow>
+            <CCol sm="12" class="form-group">
+              <label>Delivery City</label>
+              <CSelect
+                :options="cities"
+                :value.sync="deliverCity"  
+              />
+            </CCol>
+          </CRow>
+          <CRow>
+            
+          <CCol  sm="12" class="form-group">
+            <label>Delivery Postcode</label>
+            <CInput :value.sync="deliveryAddress.deliver_zip" type="text">
+            </CInput>
+          </CCol>
+        </CRow>
+    </div>
 </CContainer>
         <Footer/>
         
@@ -103,6 +156,7 @@ export default {
     },
     data () {
       return {
+        deliverCity: "",
         city: {},
         cities: [],
         postcode : "",
@@ -112,6 +166,13 @@ export default {
         "postal_code": "",
         "date": "",
         "time": ""
+        },
+        deliveryAddress: {
+          "recipient_mobile": "",
+        "deliver_zip": "",
+        "recipient_name": "",
+        "delivery_street": "",
+        "delivery_city": ""
         },
         type: 'delivery',
         address: 'new',
@@ -141,6 +202,14 @@ export default {
       });
       this.selectedAddress.city = val;
       this.selectedAddress.postal_code = city[0].postcode;
+    },
+    deliverCity: function(val){
+      console.log(val);
+      let city = this.cities.filter(function(value) {
+        return value.name_en == val;
+      });
+      this.deliveryAddress.delivery_city = val;
+      this.deliveryAddress.deliver_zip = city[0].postcode;
     }
   },
   computed: {
@@ -158,6 +227,8 @@ export default {
         .then(response => {
           this.cities = response.data
           let cities = this.cities
+          this.selectedAddress.postal_code = cities[0].postcode
+          this.deliveryAddress.deliver_zip = cities[0].postcode
           this.cities.forEach(function (element) {
             element.value = element.name_en;
           });
