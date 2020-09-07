@@ -38,6 +38,53 @@
         </CInputRadioGroup>
       </CCol>
     </CRow>
+    <div v-if="address == 'new'">
+         <CRow>
+            <CCol sm="12" class="form-group">
+              <CInput
+              :value.sync="selectedAddress.street"
+                label="Pickup Street"
+                placeholder="Pickup Street"
+              />
+            </CCol>
+          </CRow>
+        
+          <CRow>
+            <CCol sm="12" class="form-group">
+              <label>Pickup City</label>
+              <CSelect
+                :options="cities"
+                :value.sync="city"  
+              />
+            </CCol>
+          </CRow>
+          <CRow>
+            
+          <CCol  sm="12" class="form-group">
+            <label>Postcode</label>
+            <CInput :value.sync="selectedAddress.postal_code" type="text">
+            </CInput>
+          </CCol>
+        </CRow>
+        <CRow>
+          <CCol  sm="12" class="form-group">
+            <label>Pick Up Date</label>
+            <CInput type="date"
+            :value.sync="selectedAddress.date"
+            >
+            </CInput>
+          </CCol>
+        </CRow>
+        <CRow>
+          <CCol  sm="12" class="form-group">
+            <label>Pick Up Time</label>
+            <CInput type="time"
+            :value.sync="selectedAddress.time"
+            >
+            </CInput>
+          </CCol>
+        </CRow>
+    </div>
 </CContainer>
         <Footer/>
         
@@ -47,6 +94,8 @@
 <script>
 import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
+import axios from 'axios'
+import api from '../../router/api'
 export default {
     name: "AddOrder",
     components: {
@@ -54,6 +103,16 @@ export default {
     },
     data () {
       return {
+        city: {},
+        cities: [],
+        postcode : "",
+        selectedAddress: {
+          "street": "",
+        "city": "",
+        "postal_code": "",
+        "date": "",
+        "time": ""
+        },
         type: 'delivery',
         address: 'new',
         types: [
@@ -74,13 +133,37 @@ export default {
     },
     type: function(val){
       console.log(this.type);
+    },
+    city: function(val){
+      console.log(val);
+      let city = this.cities.filter(function(value) {
+        return value.name_en == val;
+      });
+      this.selectedAddress.city = val;
+      this.selectedAddress.postal_code = city[0].postcode;
     }
   },
   computed: {
     // a computed getter
     
   },
+  mounted() {
+
+      this.getCities();
+  },
   methods: {
+    getCities() {
+    axios
+        .get(api + '/cities')
+        .then(response => {
+          this.cities = response.data
+          let cities = this.cities
+          this.cities.forEach(function (element) {
+            element.value = element.name_en;
+          });
+        })
+        .catch(error => console.log(error))
+    },
     setAddress(val, $event) {
       // console.log(val);
     }
