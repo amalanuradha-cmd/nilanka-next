@@ -269,7 +269,10 @@ import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
 import api from '../../router/api'
+import current_user from '../../router/user'
 import ls from 'local-storage'
+
+console.log("user",current_user);
 
 const fields = [
   { key: 'item_description', _style:'min-width:200px' },
