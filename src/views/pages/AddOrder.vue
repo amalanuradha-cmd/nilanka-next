@@ -503,7 +503,7 @@ export default {
       this.$nextTick(() => { this.collapseDuration = 0})
     },
     addItem() {
-      
+      if (!this.item.item_description || !this.item.quantity) return;
       this.itemsTable.push(this.item);
       this.itemsTable = this.itemsTable.map((item, id) => { return {...item, id}}),
       console.log(this.itemsTable);
