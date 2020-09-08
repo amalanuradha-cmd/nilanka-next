@@ -137,6 +137,38 @@
             </CInput>
           </CCol>
         </CRow>
+        <div>
+          <hr/>
+        </div>
+        <CRow>
+            
+          <CCol  sm="12" class="form-group">
+            <div class="d-flex flex-row">
+              <div ><label>Item Description</label>
+                  <CInput :value.sync="item.item_description" type="text">
+                  </CInput>
+              </div>
+              <div >
+                <label>Quantity</label>
+            <CInput :value.sync="item.quantity" type="text">
+            </CInput>
+              </div>
+              <div >
+          <CButton
+            
+            color="primary"
+            size="lg"
+            class="m-4"
+            type="button"
+            v-on:click="addItem()"
+          >
+          Add
+          </CButton>
+            
+              </div>
+            </div>
+          </CCol>
+        </CRow>
     </div>
 </CContainer>
         <Footer/>
@@ -156,6 +188,15 @@ export default {
     },
     data () {
       return {
+        order: {
+          items: []
+        },
+        item: {
+          'item_description': "",
+          'quantity': "",
+          'order_id': "",
+        },
+        items : [],
         deliverCity: "",
         city: {},
         cities: [],
@@ -221,6 +262,12 @@ export default {
       this.getCities();
   },
   methods: {
+    addItem() {
+      
+      this.items.push(this.item);
+      console.log(this.items);
+    }
+    ,
     getCities() {
     axios
         .get(api + '/cities')
