@@ -462,6 +462,7 @@ export default {
     headers: headers
   })
       .then(response => {
+        
         console.log(response.data);
         this.success = true;
         this.uuid = response.data.uuid; 
@@ -477,6 +478,7 @@ export default {
         this.itemsTable = []
         this.type= 'delivery'
         this.address= 'new'
+        this.getCities()
         })
       .catch(error => {this.errorms = true;
                 this.errorMesssage = error;
