@@ -406,7 +406,46 @@ export default {
 
     },
     submit(){
-      console.log("address",this.selectedAddress);
+      let pickAddress = true;
+      let mark_mobile = true
+      let mark_deliver_zip = true
+      let mark_recipient_name = true
+      let mark_delivery_street= true
+      let mark_selcted_address = true
+
+      for (var key in this.selectedAddress) {
+        if (this.selectedAddress[key] !== null && this.selectedAddress[key] != "")
+            pickAddress = false
+            else {
+              mark_selcted_address = false;
+            }
+    
+      }
+    
+    if (!this.order.recipient_mobile) {
+      mark_mobile = false;
+
+    }
+    if (!this.order.deliver_zip) {
+      mark_deliver_zip = false;
+    }
+    
+    if (!this.order.recipient_name) {
+      mark_recipient_name = false;
+    }
+    
+    if (!this.order.delivery_street) {
+       mark_delivery_street = false;
+    }
+    
+    
+      if (!mark_selcted_address || !mark_delivery_street || !mark_recipient_name || !mark_mobile || !mark_deliver_zip ){
+        this.success = false;
+        this.errorms = true;
+        this.errorMesssage = "fill required fields"
+        return;
+      }
+     console.log("address",this.selectedAddress);
       this.order.addressData = this.selectedAddress;
       console.log("order",this.order);
        this.order.items.forEach(function(entry) {
@@ -479,6 +518,8 @@ export default {
           let cities = this.cities
           this.selectedAddress.postal_code = cities[0].postcode
           this.deliveryAddress.deliver_zip = cities[0].postcode
+          this.order.delivery_city = cities[0].name_en
+          this.city = cities[0].name_en
           this.cities.forEach(function (element) {
             element.value = element.name_en;
           });
