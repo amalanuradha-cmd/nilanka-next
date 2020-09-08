@@ -4,7 +4,21 @@
         <Header/>
         <CContainer>
         <h1>Add Order</h1>
-
+<CModal
+      title="Modal title"
+      color="primary"
+      :show.sync="success"
+    >
+      Success fully added <br>
+      {{uuid}}
+    </CModal>
+    <CModal
+      title="Modal title"
+      color="danger"
+      :show.sync="errorms"
+    >
+      {{errorMesssage}}
+    </CModal>
         <CRow>
       <CCol sm="12" class="form-group">
         <CInput
@@ -276,12 +290,16 @@ export default {
     },
     data () {
       return {
+        errorms: false,
+        errorMesssage: "",
         fields,
-        
+        success: false,
       details: [],
       itemsTable: [],
       collapseDuration: 0,
+        uuid: "",
         order: {
+          
           items: [],
           type: "delivery",
           addressData: this.selectedAddress,
@@ -382,8 +400,14 @@ export default {
       .post(api + '/orders', this.order, {
     headers: headers
   })
-      .then(response => (this.info = response.data.bpi))
-      .catch(error => console.log(error))
+      .then(response => {
+        console.log(response.data);
+        this.success = true;
+        this.uuid = response.data.uuid;  
+        })
+      .catch(error => {this.errorms = true;
+                this.errorMesssage = error;
+      })
     },
     deleteItem(item, index) {
       console.log("delete", index);
