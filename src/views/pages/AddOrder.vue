@@ -22,6 +22,7 @@
         <CRow>
       <CCol sm="12" class="form-group">
         <CInput
+          :value.sync="order.customer"
           label="Customer B2B# (Internal Order Number)"
           placeholder="Optional"
         />
@@ -31,6 +32,7 @@
     <CRow>
       <CCol sm="12" class="form-group">
         <CInput
+        :value.sync="order.barcode"
           label="Sleeping Barcode (If Generated)"
           placeholder="optional"
         />
@@ -383,6 +385,20 @@ export default {
       this.getCities();
   },
   methods: {
+    reset() {
+      this.order= {
+          
+          items: [],
+          type: "delivery",
+          addressData: {},
+          "recipient_mobile": "",
+        "deliver_zip": "",
+        "recipient_name": "",
+        "delivery_street": "",
+        "delivery_city": ""
+        }
+
+    },
     submit(){
       console.log("address",this.selectedAddress);
       this.order.addressData = this.selectedAddress;
@@ -403,7 +419,11 @@ export default {
       .then(response => {
         console.log(response.data);
         this.success = true;
-        this.uuid = response.data.uuid;  
+        this.uuid = response.data.uuid; 
+        this.reset(); 
+        this.selectedAddress = {}
+        this.city = ""
+        this.itemsTable = []
         })
       .catch(error => {this.errorms = true;
                 this.errorMesssage = error;
@@ -433,6 +453,8 @@ export default {
       this.itemsTable = this.itemsTable.map((item, id) => { return {...item, id}}),
       console.log(this.itemsTable);
       this.order.items = this.itemsTable;
+      this.item.item_description = "";
+      this.item.quantity = "";
     }
     ,
     getCities() {
