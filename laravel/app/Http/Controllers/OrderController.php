@@ -94,7 +94,7 @@ class OrderController extends AppBaseController
     public function show($id)
     {
         
-        return Order::with(['user', 'order_address'])->findOrFail($id);
+        return Order::with(['user', 'order_address', 'order_items'])->findOrFail($id);
     }
 
     /**

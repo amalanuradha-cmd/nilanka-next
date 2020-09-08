@@ -168,4 +168,9 @@ class Order extends Model
     {
         return $this->hasOne('App\Models\OrderAddress', 'order_uuid', 'uuid');
     }
+
+    public function order_items()
+    {
+        return $this->hasMany('App\Models\OrderItem', 'order_id', 'uuid');
+    }
 }
