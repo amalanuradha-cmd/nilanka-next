@@ -194,7 +194,7 @@
                 <td class="py-2">
                   <CButton
                     color="danger"
-                    variant="outline"
+                    
                     square
                     size="sm"
                     @click="deleteItem(item, index)"
