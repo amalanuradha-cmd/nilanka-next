@@ -11,6 +11,7 @@ use Flash;
 use Response;
 use App\Models\Order;
 use App\Models\OrderAddress;
+use App\Models\OrderItem;
 use Milon\Barcode\Facades\DNS1DFacade as DNS1D;
 
 class OrderController extends AppBaseController
@@ -71,7 +72,7 @@ class OrderController extends AppBaseController
     //     $order->barcode = $barcode;
     //     $order->save();
 
-        
+        // return $request;
         $orderAddress = new OrderAddress;
         $orderAddress->street = $request->addressData['street'];
         $orderAddress->city = $request->addressData['city'];
@@ -80,7 +81,17 @@ class OrderController extends AppBaseController
         $orderAddress->time = $request->addressData['time'];
         $orderAddress->order_uuid = $order->uuid;
         $orderAddress->save();
-        return Order::with(['user', 'order_address'])->findOrFail($order->uuid);
+        // $request->items['order_id'] = $order->uuid;
+        $items = $request->get('items');
+        foreach ($items  as $key => &$value) {
+            // return $order->uuid;
+           
+            $value["order_id"] = $order->uuid;
+        }
+        // return $items;
+        OrderItem::insert($items);
+
+        return Order::with(['user', 'order_address', 'order_items'])->findOrFail($order->uuid);
         
     }
 

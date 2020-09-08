@@ -95,7 +95,7 @@
       <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="selectedAddress.street"
+              :value.sync="selectedAddress.recipient_mobile"
                 label="Recipient Mobile Phone"
                 placeholder="Contact No"
               />
@@ -105,7 +105,7 @@
           <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="selectedAddress.street"
+              :value.sync="deliveryAddress.recipient_name"
                 label="Recipient Name"
                 placeholder="Name of the Recipient"
               />
@@ -114,7 +114,7 @@
           <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="selectedAddress.street"
+              :value.sync="deliveryAddress.street"
                 label="Dilivery Street"
                 placeholder="Pickup Street"
               />
@@ -224,6 +224,22 @@
             </CDataTable>
           </CCol>
         </CRow>
+        <div>
+          <hr/>
+        </div>
+        <CRow>
+          <CCol sm="12">
+            <CButton
+                    color="primary"
+                    :block="true"
+                    square
+                    size="xl"
+                    @click="submit()"
+                  >
+                    Submit
+                  </CButton>
+          </CCol>
+        </CRow>
     </div>
 </CContainer>
         <Footer/>
@@ -237,6 +253,7 @@ import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
 import api from '../../router/api'
+import ls from 'local-storage'
 
 const fields = [
   { key: 'item_description', _style:'min-width:200px' },
@@ -265,7 +282,9 @@ export default {
       itemsTable: [],
       collapseDuration: 0,
         order: {
-          items: []
+          items: [],
+          type: "delivery",
+          addressData: this.selectedAddress,
         },
 
         item: {
@@ -313,6 +332,7 @@ export default {
     },
     type: function(val){
       console.log(this.type);
+      this.order.type = val;
     },
     city: function(val){
       console.log(val);
@@ -340,6 +360,26 @@ export default {
       this.getCities();
   },
   methods: {
+    submit(){
+      console.log("address",this.selectedAddress);
+      this.order.addressData = this.selectedAddress;
+      console.log("order",this.order);
+       this.order.items.forEach(function(entry) {
+          delete entry.id;
+      });
+ 
+       let headers = {
+        Accept: 'application/json',
+        Authorization: "Bearer " + ls.get('token')
+      }
+    
+     axios
+      .post(api + '/orders', this.order, {
+    headers: headers
+  })
+      .then(response => (this.info = response.data.bpi))
+      .catch(error => console.log(error))
+    },
     deleteItem(item, index) {
       console.log("delete", index);
       this.itemsTable.splice(index, 1);
@@ -361,8 +401,9 @@ export default {
     addItem() {
       
       this.itemsTable.push(this.item);
-      this.itemsTable= this.itemsTable.map((item, id) => { return {...item, id}}),
+      this.itemsTable = this.itemsTable.map((item, id) => { return {...item, id}}),
       console.log(this.itemsTable);
+      this.order.items = this.itemsTable;
     }
     ,
     getCities() {
