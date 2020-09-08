@@ -390,7 +390,13 @@ export default {
           
           items: [],
           type: "delivery",
-          addressData: {},
+          addressData: {
+            "street": "",
+        "city": "",
+        "postal_code": "",
+        "date": "",
+        "time": ""
+          },
           "recipient_mobile": "",
         "deliver_zip": "",
         "recipient_name": "",
@@ -421,9 +427,17 @@ export default {
         this.success = true;
         this.uuid = response.data.uuid; 
         this.reset(); 
-        this.selectedAddress = {}
+        this.selectedAddress = {
+          "street": "",
+        "city": "",
+        "postal_code": "",
+        "date": "",
+        "time": ""
+        }
         this.city = ""
         this.itemsTable = []
+        this.type= 'delivery'
+        this.address= 'new'
         })
       .catch(error => {this.errorms = true;
                 this.errorMesssage = error;
