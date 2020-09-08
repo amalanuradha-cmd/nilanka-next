@@ -169,6 +169,61 @@
             </div>
           </CCol>
         </CRow>
+        <CRow>
+          <CCol sm="12">
+            <CDataTable
+              :items="itemsTable"
+              :fields="fields"
+              column-filter
+              table-filter
+              items-per-page-select
+              :items-per-page="5"
+              hover
+              sorter
+              pagination
+              
+            >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="getBadge(item.status)">
+                    {{item.status}}
+                  </CBadge>
+                </td>
+              </template>
+              <template #show_details="{item, index}">
+                <td class="py-2">
+                  <CButton
+                    color="danger"
+                    variant="outline"
+                    square
+                    size="sm"
+                    @click="deleteItem(item, index)"
+                  >
+                    Delete
+                  </CButton>
+                </td>
+              </template>
+              <template #details="{item}">
+                <CCollapse :show="Boolean(item._toggled)" :duration="collapseDuration">
+                  <CCardBody>
+                    <CMedia :aside-image-props="{ height: 102 }">
+                      <h4>
+                        {{item.username}}
+                      </h4>
+                      <p class="text-muted">User since: {{item.registered}}</p>
+                      <CButton size="sm" color="info" class="">
+                        User Settings
+                      </CButton>
+                      <CButton size="sm" color="danger" class="ml-1">
+                        Delete
+                      </CButton>
+                    </CMedia>
+                  </CCardBody>
+                </CCollapse>
+              </template>
+            </CDataTable>
+          </CCol>
+        </CRow>
     </div>
 </CContainer>
         <Footer/>
@@ -177,10 +232,26 @@
 </template>
 
 <script>
+
 import Header from '../../containers/Site/Header'
 import Footer from '../../containers/Site/Footer'
 import axios from 'axios'
 import api from '../../router/api'
+
+const fields = [
+  { key: 'item_description', _style:'min-width:200px' },
+  
+  { key: 'quantity', _style:'min-width:100px;' },
+  
+ 
+  { 
+    key: 'show_details', 
+    label: '', 
+    _style: 'width:1%', 
+    sorter: false, 
+    filter: false
+  }
+]
 export default {
     name: "AddOrder",
     components: {
@@ -188,15 +259,22 @@ export default {
     },
     data () {
       return {
+        fields,
+        
+      details: [],
+      itemsTable: [],
+      collapseDuration: 0,
         order: {
           items: []
         },
+
         item: {
           'item_description': "",
           'quantity': "",
           'order_id': "",
         },
         items : [],
+        
         deliverCity: "",
         city: {},
         cities: [],
@@ -262,10 +340,29 @@ export default {
       this.getCities();
   },
   methods: {
+    deleteItem(item, index) {
+      console.log("delete", index);
+      this.itemsTable.splice(index, 1);
+    },
+    getBadge (status) {
+      switch (status) {
+        case 'Active': return 'success'
+        case 'Inactive': return 'secondary'
+        case 'Pending': return 'warning'
+        case 'Banned': return 'danger'
+        default: 'primary'
+      }
+    },
+    toggleDetails (item) {
+      this.$set(this.itemsTable[item.id], '_toggled', !item._toggled)
+      this.collapseDuration = 300
+      this.$nextTick(() => { this.collapseDuration = 0})
+    },
     addItem() {
       
-      this.items.push(this.item);
-      console.log(this.items);
+      this.itemsTable.push(this.item);
+      this.itemsTable= this.itemsTable.map((item, id) => { return {...item, id}}),
+      console.log(this.itemsTable);
     }
     ,
     getCities() {
