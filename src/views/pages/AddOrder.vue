@@ -95,7 +95,7 @@
       <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="selectedAddress.recipient_mobile"
+              :value.sync="order.recipient_mobile"
                 label="Recipient Mobile Phone"
                 placeholder="Contact No"
               />
@@ -105,7 +105,7 @@
           <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="deliveryAddress.recipient_name"
+              :value.sync="order.recipient_name"
                 label="Recipient Name"
                 placeholder="Name of the Recipient"
               />
@@ -114,7 +114,7 @@
           <CRow>
             <CCol sm="12" class="form-group">
               <CInput
-              :value.sync="deliveryAddress.street"
+              :value.sync="order.delivery_street"
                 label="Dilivery Street"
                 placeholder="Pickup Street"
               />
@@ -133,7 +133,7 @@
             
           <CCol  sm="12" class="form-group">
             <label>Delivery Postcode</label>
-            <CInput :value.sync="deliveryAddress.deliver_zip" type="text">
+            <CInput :value.sync="order.deliver_zip" type="text">
             </CInput>
           </CCol>
         </CRow>
@@ -285,6 +285,11 @@ export default {
           items: [],
           type: "delivery",
           addressData: this.selectedAddress,
+          "recipient_mobile": "",
+        "deliver_zip": "",
+        "recipient_name": "",
+        "delivery_street": "",
+        "delivery_city": ""
         },
 
         item: {
@@ -347,8 +352,8 @@ export default {
       let city = this.cities.filter(function(value) {
         return value.name_en == val;
       });
-      this.deliveryAddress.delivery_city = val;
-      this.deliveryAddress.deliver_zip = city[0].postcode;
+      this.order.delivery_city = val;
+      this.order.deliver_zip = city[0].postcode;
     }
   },
   computed: {
