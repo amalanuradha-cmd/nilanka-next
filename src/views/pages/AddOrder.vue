@@ -169,7 +169,7 @@
             </div>
           </CCol>
         </CRow>
-        <CRow>
+        <CRow v-if="itemsTable.length > 0">
           <CCol sm="12">
             <CDataTable
               :items="itemsTable"
