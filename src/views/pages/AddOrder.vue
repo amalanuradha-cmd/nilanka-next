@@ -9,7 +9,7 @@
       color="primary"
       :show.sync="success"
     >
-      Success fully added <br>
+      Order successfully create <br>
       {{uuid}}
     </CModal>
     <CModal
